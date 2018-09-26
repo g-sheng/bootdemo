@@ -1,30 +1,28 @@
 package smm.springboot.base.filter;
 
-import com.alibaba.fastjson.JSON;
-import smm.springboot.dto.request.SelectUserDTO;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
 @WebFilter(filterName = "myFilter", urlPatterns = "/*")
+@Slf4j
 public class MyFilter implements Filter {
     @Override
     public void init(FilterConfig arg0) throws ServletException {
-        System.out.println("MyFilter init............");
+       log.info("MyFilter init............");
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println("MyFilter doFilter.........before");
-        String id=request.getParameter("id");
-        SelectUserDTO selectUserDTO= JSON.parseObject(JSON.toJSONString(request.getParameterMap()),SelectUserDTO.class);
+       log.info("MyFilter doFilter.........before");
         chain.doFilter(request, response);
-        System.out.println("MyFilter doFilter.........after");
+        log.info("MyFilter doFilter.........after");
     }
 
     @Override
     public void destroy() {
-        System.out.println("MyFilter destroy..........");
+       log.info("MyFilter destroy..........");
     }
 }

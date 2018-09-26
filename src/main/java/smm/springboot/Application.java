@@ -9,8 +9,8 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@PropertySource({"classpath:/config/business-app.properties",
-        "classpath:/config/local.properties"})
+@PropertySource({"classpath:/config/business-app.properties", "classpath:/config/local.properties"})
+//@PropertySource({"classpath:/config/business-app.properties", "classpath:/config/online.properties"})
 @Slf4j
 public class Application extends SpringBootServletInitializer {
     public static void main(String[] args) {
